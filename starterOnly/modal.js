@@ -24,6 +24,7 @@ modalbgclose.addEventListener("click", () => {
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  form.style.display = "block";
 }
 
 // launch modal form
@@ -149,3 +150,16 @@ function clearError(inputEl) {
   wrapper.setAttribute("data-error", "");
   wrapper.setAttribute("data-error-visible", "false");
 }
+
+//when form is submitted then success message is displayed or nothing happens
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); // stop default submit
+  if (validate()) {
+    modalbg.style.display = "none";
+    form.style.display = "none";
+    const successdiv = document.createElement("div");
+    successdiv.innerHTML = "Merci ! Votre réservation a été reçue.";
+    form.parentNode.appendChild(successdiv);
+    modalbg.style.display = "block";
+  }
+});
