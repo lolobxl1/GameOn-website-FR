@@ -15,28 +15,30 @@ const modalbgfermerclose = document.querySelector(".bgroundfermer .close");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-// launch modal event
+// listener sur tous les boutons avec class .model-btn
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// close modal event
+// listener sur .bground .close
 modalbgclose.addEventListener("click", () => {
   closeModal();
 });
 
+// listener sur .bgroundfermer .close
 modalbgfermerclose.addEventListener("click", () => {
   closeModalfermer();
 });
 
-// launch modal form
+// afficher formulaire
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal form
+// fermer formulaire
 function closeModal() {
   modalbg.style.display = "none";
 }
 
+// fermer message de confirmation
 function closeModalfermer() {
   modalbgfermer.style.display = "none";
 }
@@ -53,7 +55,7 @@ const quantity = form.querySelector("#quantity");
 const terms = form.querySelector("#checkbox1"); // CGU (obligatoire)
 const radios = form.querySelectorAll('input[name="location"]');
 
-// Règles
+// validation prenom
 function validateFirst() {
   const value = first.value.trim();
   if (value.length < 2) {
@@ -64,6 +66,7 @@ function validateFirst() {
   return true;
 }
 
+//validation nom
 function validateLast() {
   const value = last.value.trim();
   if (value.length < 2) {
@@ -74,9 +77,10 @@ function validateLast() {
   return true;
 }
 
+//validation email
 function validateEmail() {
   const value = email.value.trim();
-  // Regex email simple et robuste pour une vérification de base
+  // Regex email : \s@ : un ou plusieurs caracteres sans whitespace ou arobase
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!re.test(value)) {
     setError(email, "Veuillez saisir une adresse e-mail valide.");
@@ -86,6 +90,7 @@ function validateEmail() {
   return true;
 }
 
+//validation date de naissance
 function validateBirthdate() {
   // HTML5 gère déjà le format; on vérifie juste la présence (required dans le HTML)
   if (!birthdate.value) {
@@ -96,6 +101,7 @@ function validateBirthdate() {
   return true;
 }
 
+//validation nombre de tournoi
 function validateQuantity() {
   const value = quantity.value.trim();
   if (value === "" || isNaN(value)) {
@@ -165,16 +171,11 @@ form.addEventListener("submit", function (event) {
   event.preventDefault(); // stop default submit
   if (validate()) {
     modalbg.style.display = "none";
-    /*
-    form.style.display = "none";
-    const successdiv = document.createElement("div");
-    successdiv.innerHTML = "Merci ! Votre réservation a été reçue.";
-    form.parentNode.appendChild(successdiv);
-    modalbg.style.display = "block";*/
     modalbgfermer.style.display = "block";
   }
 });
 
+//fonction fermer le message de confirmation, on renvoie true pour que la fermeture se fasse
 function fermer() {
   return true;
 }
