@@ -442,13 +442,45 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
-.header-logo img {
-  width: 103px;
-  height: 19px;
-  margin-left: 0px;
-  margin-top: 33px
+
+.merci {
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
 }
+
+
+  .bgroundfermer .formData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 51vh;
+}
+
+
+
+@media screen and (max-width: 800px) {
+  .content {
+    max-height: 92dvh;               /* keep the panel within the viewport */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;                 /* preserves rounded corners */
+  }
+  
+  .modal-body {
+    flex: 1;                          /* takes remaining space only */
+    overflow: auto;                   /* scrolls if content is long */
+    inset: auto;                      /* reset */
+    width: auto;
+    height: auto;
+  }
+
+  .header-logo img {
+    width: 103px;
+    height: 19px;
+    margin-left: 0px;
+    margin-top: 33px
+  }
 
   .hero-section {
     display: block;
@@ -491,12 +523,17 @@ footer {
   }
 
   .topnav {
-     margin: 0px 30px 0px 30px;
+     margin: -10px 30px 0px 30px;
   }
 
   .topnav a.active {
      margin-top: 20px;
   }
+
+  .bgroundfermer .formData {
+    height: 81vh;
+  }
+
 }
 
 @keyframes modalopen {
